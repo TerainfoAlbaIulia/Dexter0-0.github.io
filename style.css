@@ -1,0 +1,297 @@
+/* Imports */
+@import url('https://fonts.googleapis.com/css?family=Work+Sans:400,600');
+
+/* Universal CSS */
+
+body
+{
+  margin: 0;
+  background-color: #222222;
+	font-family: "Poppins", Helvetica, sans-serif;
+  font-weight: 800;
+}
+
+.container
+{
+  padding-top: 7%;
+  padding-bottom: 4%;
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+@media only screen and (max-width: 900px) 
+{
+  .container
+  {
+    padding-left: 10%;
+    padding-right: 10%;
+  }
+}
+
+p
+{
+  color: #818181;
+}
+
+h1, h2, h3, h4, h5, h6
+{
+  color: #dadada;
+  font-weight: bold;
+}
+
+.ButtonPrimary
+{
+	background-color: #222222;
+  border-radius: 50px;
+	border: 2px solid #007CED;
+	display: inline-block;
+	cursor: pointer;
+	color: #dadada;
+  padding: 10px 60px;
+  text-decoration: none;
+  transition: transform 0.2s;
+}
+
+.ButtonPrimary:hover 
+{
+  background-color: #007CED;
+  color: #dadada;
+  text-decoration: none;
+  transform: scale(1.1);
+}
+
+.ButtonSecondary
+{
+	background-color: #222222;
+  border-radius: 50px;
+	border: 2px solid #dadada;
+	display: inline-block;
+	cursor: pointer;
+	color: #dadada;
+  padding: 10px 40px;
+  text-decoration: none;
+  transition: transform 0.2s;
+}
+
+.ButtonSecondary:hover 
+{
+  background-color: #dadada;
+  color: #333333;
+  text-decoration: none;
+  transform: scale(1.1);
+}
+
+@media only screen and (max-width: 800px) 
+{
+  .ButtonPrimary
+  {
+    padding: 10px 30px;
+  }
+
+  .ButtonSecondary
+  {
+    padding: 10px 20px;
+  }
+}
+
+.Underline 
+{ 
+  margin-bottom: 2%;
+  height: 3px;
+  width: 20%;
+	position: relative;
+	background: #333333;
+	-moz-border-radius: 25px;
+	-webkit-border-radius: 25px;
+	border-radius: 25px;
+	box-shadow: inset 0 -1px 1px #333333;
+}
+
+.Underline > span {
+  display: block;
+  height: 100%;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  background-color: #007CED;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Top Navigation Bar */
+
+.TopNavigationBar
+{
+  padding: 2%;
+}
+
+#NameIcon
+{
+  float: left;
+  border-radius: 50%;
+  border: 5px solid #333333;
+}
+
+nav
+{
+  float: right;
+}
+
+nav ul 
+{
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+nav li 
+{
+  display: inline-block;
+  margin-left: 70px;
+  padding-top: 23px;
+
+  position: relative;
+}
+
+nav a 
+{
+  color: #818181;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 14px;
+}
+
+nav a:hover 
+{
+  color: #dadada;
+  text-decoration: none;
+}
+
+nav a::before 
+{
+  content: '';
+  display: block;
+  height: 5px;
+  background-color: #007CED;
+
+  position: absolute;
+  top: 0;
+  width: 0%;
+
+  transition: all ease-in-out 250ms;
+}
+
+nav a:hover::before 
+{
+  width: 100%;
+}
+
+nav .ActiveLink
+{
+  color: #dadada;
+}
+
+/* Intro Section */
+@media only screen and (max-width: 800px) 
+{
+  .Intro
+  {
+    text-align: center;
+  }
+
+  .Intro p
+  {
+    text-align: left;
+  }
+
+  .Intro #IntroSectionTitle
+  {
+    padding-top: 1%;
+    padding-bottom: 2%;
+  }
+}
+
+#ProfilePhoto
+{
+  border-radius: 50%;
+  border: 15px solid #333333;
+  width: 60%;
+  margin-left:auto;
+  margin-right:auto;
+  display:block;
+  transition: transform 0.2s;
+}
+
+#ProfilePhoto:hover
+{
+  transform: scale(1.1);
+}
+
+#IntroSectionTitle
+{
+  font-size: 300%;
+}
+
+#IntroButtonLeft
+{
+  margin-top: 5%;
+  margin-right: 5%;
+}
+
+#IntroButtonRight
+{
+  margin-top: 5%;
+}
+
+/* Ocupations Section */
+
+
+
+
+
+/* Footer Section */
+
+
+/* Scroll to top button */
+
+.backToTop
+{
+  display: none;
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  font-size: 3em;
+  z-index: 9999;
+  height: 50px;
+  width: 50px;
+  background-color: #111;
+  opacity: 35%;
+  text-align: center;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+@media only screen and (max-width: 800px) 
+{
+  .backToTop
+  {
+    bottom: 15px;
+    right: 15px;
+  }
+}
+
+
+.backToTop i
+{
+  position: absolute;
+  top: 0px;
+  left: 10px;
+  color: #007CED;
+  opacity: 100%;
+}
+
+.backToTop i:hover
+{
+  color: #ffffff;
+}
