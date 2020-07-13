@@ -107,7 +107,8 @@ h1, h2, h3, h4, h5, h6
 	box-shadow: inset 0 -1px 1px #333333;
 }
 
-.Underline > span {
+.Underline > span 
+{
   display: block;
   height: 100%;
   border-top-right-radius: 8px;
@@ -117,6 +118,34 @@ h1, h2, h3, h4, h5, h6
   background-color: #007CED;
   position: relative;
   overflow: hidden;
+}
+
+@media only screen and (max-width: 1000px) 
+{
+  .Underline
+  {
+    width: 35%;
+  }
+
+}
+
+
+@media only screen and (max-width: 800px) 
+{
+  .Underline
+  {
+    width: 50%;
+  }
+
+}
+
+@media only screen and (max-width: 550px) 
+{
+  .Underline
+  {
+    width: 65%;
+  }
+
 }
 
 /* Top Navigation Bar */
@@ -255,7 +284,7 @@ nav .ActiveLink
 
 /* Scroll to top button */
 
-.backToTop
+.ScrollToTopButton
 {
   display: none;
   position: fixed;
@@ -274,7 +303,7 @@ nav .ActiveLink
 
 @media only screen and (max-width: 800px) 
 {
-  .backToTop
+  .ScrollToTopButton
   {
     bottom: 15px;
     right: 15px;
@@ -282,7 +311,7 @@ nav .ActiveLink
 }
 
 
-.backToTop i
+.ScrollToTopButton i
 {
   position: absolute;
   top: 0px;
@@ -291,7 +320,7 @@ nav .ActiveLink
   opacity: 100%;
 }
 
-.backToTop i:hover
+.ScrollToTopButton i:hover
 {
   color: #ffffff;
 }
