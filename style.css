@@ -1,7 +1,14 @@
 /* Imports */
 @import url('https://fonts.googleapis.com/css?family=Work+Sans:400,600');
+@import url(https://use.fontawesome.com/releases/v5.0.6/css/all.css);
 
 /* Universal CSS */
+*,
+*:before,
+*:after 
+{
+  box-sizing: border-box;
+}
 
 body
 {
@@ -31,6 +38,11 @@ body
 p
 {
   color: #818181;
+}
+
+a
+{
+  cursor: pointer;
 }
 
 a:visited 
@@ -162,6 +174,7 @@ h1, h2, h3, h4, h5, h6
 
 img
 {
+  cursor: pointer;
   transition: transform 0.2s;
 }
 
@@ -251,7 +264,7 @@ nav .ActiveLink
 #BarsIcon
 {
   padding-right: 0.5rem;
-  padding-top: 0.5rem;
+  padding-top: 0.3rem;
   font-size: 4rem;
   transition: transform 0.2s;
 }
@@ -382,7 +395,7 @@ div#slider figure
 
 .FooterSection
 {
-  margin-top: 5%;
+  margin-top: 10%;
   background-color: black;
 }
 
@@ -440,3 +453,49 @@ div#slider figure
 {
   color: #ffffff;
 }
+
+/* Page specific css */
+
+/* Phone Navigation Page */
+
+#NavigationButton, #ContactNavigation, #AboutNavigation
+{
+  margin-left: 5%;
+  margin-top: 10%;
+  padding: 15px 90px;
+  text-align: center;
+}
+
+#AboutNavigation
+{
+  margin-top: 15%;
+  padding: 15px 75px;
+}
+
+#ContactNavigation
+{
+  padding: 15px 92px;
+}
+
+.FooterSectionPhone
+{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: black;
+}
+
+@media only screen and (min-width: 767px) 
+{
+  #NavigationButton, #ContactNavigation, #AboutNavigation
+  {
+    display: none
+  }
+
+  .FooterSectionPhone
+  {
+    margin-top: 35%;
+  }
+}
+
