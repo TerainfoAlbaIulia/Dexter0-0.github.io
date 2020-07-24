@@ -33,6 +33,16 @@ p
   color: #818181;
 }
 
+a:visited 
+{
+  text-decoration: none;
+}
+
+a:active 
+{
+  text-decoration: none;
+}
+
 h1, h2, h3, h4, h5, h6
 {
   color: #dadada;
@@ -96,7 +106,7 @@ h1, h2, h3, h4, h5, h6
 
 .Underline 
 { 
-  margin-bottom: 2%;
+  margin-bottom: 3%;
   height: 3px;
   width: 20%;
 	position: relative;
@@ -124,16 +134,17 @@ h1, h2, h3, h4, h5, h6
 {
   .Underline
   {
+    margin-bottom: 4%;
     width: 35%;
   }
 
 }
 
-
 @media only screen and (max-width: 800px) 
 {
   .Underline
   {
+    margin-bottom: 5%;
     width: 50%;
   }
 
@@ -143,9 +154,20 @@ h1, h2, h3, h4, h5, h6
 {
   .Underline
   {
+    margin-bottom: 6%;
     width: 65%;
   }
 
+}
+
+img
+{
+  transition: transform 0.2s;
+}
+
+img:hover
+{
+  transform: scale(1.1);
 }
 
 /* Top Navigation Bar */
@@ -203,11 +225,9 @@ nav a::before
   display: block;
   height: 5px;
   background-color: #007CED;
-
   position: absolute;
   top: 0;
   width: 0%;
-
   transition: all ease-in-out 250ms;
 }
 
@@ -221,7 +241,36 @@ nav .ActiveLink
   color: #dadada;
 }
 
+/* Hamburger Menu */
+
+.HamburgerMenu
+{
+  float: right;
+}
+
+#BarsIcon
+{
+  padding-right: 0.5rem;
+  padding-top: 0.5rem;
+  font-size: 4rem;
+  transition: transform 0.2s;
+}
+
+#BarsIcon:hover
+{
+  transform: scale(1.1);
+}
+
+@media only screen and (min-width: 767px) 
+{
+  .HamburgerMenu
+  {
+    display: none
+  }
+}
+
 /* Intro Section */
+
 @media only screen and (max-width: 800px) 
 {
   .Intro
@@ -237,7 +286,7 @@ nav .ActiveLink
   .Intro #IntroSectionTitle
   {
     padding-top: 1%;
-    padding-bottom: 2%;
+    padding-bottom: 4%;
   }
 }
 
@@ -249,17 +298,12 @@ nav .ActiveLink
   margin-left:auto;
   margin-right:auto;
   display:block;
-  transition: transform 0.2s;
-}
-
-#ProfilePhoto:hover
-{
-  transform: scale(1.1);
 }
 
 #IntroSectionTitle
 {
   font-size: 300%;
+  padding-bottom: 3%;
 }
 
 #IntroButtonLeft
@@ -276,11 +320,77 @@ nav .ActiveLink
 /* Ocupations Section */
 
 
+/* Clients Section */
 
+@keyframes slidy 
+{
+  0% { left: 0%; }
+  10% { left: 0%; }
+  25% { left: -100%; }
+  35% { left: -100%; }
+  40% { left: -200%; }
+  55% { left: -200%; }
+  65% { left: -300%; }
+  85% { left: -300%; }
+  90% { left: -400%; }
+  100% { left: -400%;}
+}
+  
+div#slider 
+{ 
+  overflow: hidden; 
+}
 
+div#slider figure img 
+{ 
+  width: 20%; 
+  float: left; 
+}
+
+div#slider figure 
+{ 
+  position: relative;
+  width: 500%;
+  text-align: left;
+  font-size: 0;
+  animation: 10s slidy infinite; 
+}
+  
+#ClientLogo
+{
+  padding-left: 6%;
+  padding-right: 6%;
+}
+
+#slider
+{
+  padding-top: 5%;
+  padding-left: 15%;
+  padding-right: 15%;
+}
+
+@media only screen and (max-width: 800px) 
+{
+  #slider
+  {
+    padding-left: 10%;
+    padding-right: 10%;
+  }
+}
 
 /* Footer Section */
 
+.FooterSection
+{
+  margin-top: 5%;
+  background-color: black;
+}
+
+#CopyrightText
+{
+  text-align: center;
+  padding: 2%;
+}
 
 /* Scroll to top button */
 
@@ -299,6 +409,12 @@ nav .ActiveLink
   text-align: center;
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
+  transition: transform 0.2s;
+}
+
+.ScrollToTopButton:hover 
+{
+  transform: scale(1.1);
 }
 
 @media only screen and (max-width: 800px) 
