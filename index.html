@@ -1,166 +1,331 @@
 <!DOCTYPE html>
 
+<style>
+    body 
+    {
+        display: flex;
+        justify-content: center;
+        background-color: #1f1f1f;
+    }
+
+    .flower 
+    {
+        position: relative;
+        margin-top: 5%;
+        z-index: 1;
+    }
+
+    .flower__head 
+    {
+        width: 240px;
+        height: 80px;
+        border-radius: 40px;
+        background: #517bd6;
+        margin-top: 100px;
+    }
+    
+
+    .flower__head::after, .flower__head::before 
+    {
+        content: '';
+        position: absolute;
+        background: #517bd6;
+        border-radius: 40px;
+        width: 240px;
+        height: 80px;
+        transform: rotate(60deg);
+    }
+
+    .flower__head::before 
+    {
+        transform: rotate(-60deg);
+    }
+
+    .flower__eye 
+    {
+        position: absolute;
+        width: 40px;
+        height: 40px;
+        z-index: 1;
+        background: #fff;
+        border-radius: 50%;
+        animation: blink 3s infinite;
+    }
+
+    .flower__eye.left 
+    {
+        left: 30%;
+    }
+
+    .flower__eye.right 
+    {
+        left: 55%;
+    }
+
+    .flower__eye span 
+    {
+        position: absolute;
+        transition: all 0.3s;
+        width: 20px;
+        height: 20px;
+        margin-left: 10px;
+        margin-top: 10px;
+        background: #000;
+        border-radius: 50%;
+    }
+
+    .flower__nose 
+    {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        top: 80%;
+        width: 30px;
+        height: 30px;
+        z-index: 1;
+        background: pink;
+        border-radius: 50%;
+    }
+
+    .flower__leaf 
+    {
+        width: 60px;
+        height: 60px;
+        background: #51d691;
+        position: absolute;
+        top: 260px;
+        left: 42px;
+        border-radius: 50px;
+        border-top-right-radius: 0;
+        transform: rotate(-283deg) skewX(-12deg) skewY(-4deg);
+    }
+
+    .flower__leaf--shadow 
+    {
+        position: absolute;
+        background: rgba(0, 0, 0, 0.25);
+        height: 30px;
+        width: 30px;
+        top: 275px;
+        left: 58px;
+        border-radius: 50px;
+        border-top-right-radius: 0;
+        transform: rotate(-283deg) skewX(-12deg) skewY(-4deg);
+    }
+
+    .flower__leaf--shadow.oposite 
+    {
+        top: 318px;
+        left: 150px;
+        transform: rotate(-163deg) skewX(-12deg) skewY(-4deg);
+    }
+
+    .flower__leaf.oposite 
+    {
+        top: 300px;
+        left: 140px;
+        transform: rotate(-163deg) skewX(-12deg) skewY(-4deg);
+    }
+
+    .flower__stem 
+    {
+        position: absolute;
+        height: 300px;
+        width: 16px;
+        background: #51d691;
+        border-radius: 4px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: -1;
+    }
+
+    .flower__pot 
+    {
+        width: 200px;
+        height: 40px;
+        background-color: #ff7043;
+        position: absolute;
+        top: 380px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .flower_writing
+    {
+        text-align: center;
+        color: white;
+        font-size: 275%;
+        margin-top: 30%;
+    }
+
+    .flower__pot--shadow 
+    {
+        width: 144px;
+        position: absolute;
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+        border-top: 20px solid #d66f51;
+        top: 40px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .flower__pot--bottom 
+    {
+        width: 100px;
+        height: 0px;
+        position: absolute;
+        border-left: 30px solid transparent;
+        border-right: 30px solid transparent;
+        border-top: 100px solid #ff7043;
+        top: 40px;
+        z-index: -1;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    @keyframes blink 
+    {
+        0%, 100% {
+            transform: scale(1, 0.05);
+        }
+        5%, 95% {
+            transform: scale(1, 1);
+        }
+    }
+
+    /* lmao cod pop up, cod e mult zis ca e css */
+    .box 
+    {
+        width: 40%;
+        margin: 0 auto;
+        background: rgba(255,255,255,0.2);
+        padding: 35px;
+        border: 2px solid #fff;
+        border-radius: 20px/50px;
+        background-clip: padding-box;
+        text-align: center;
+    }
+
+    
+    .overlay 
+    {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: rgba(0, 0, 0, 0.7);
+        transition: opacity 500ms;
+        visibility: hidden;
+        opacity: 0;
+        z-index: 2;
+    }
+    
+    .overlay:target 
+    {
+        visibility: visible;
+        opacity: 1;
+    }
+
+    .popup 
+    {
+        margin: 70px auto;
+        padding: 20px;
+        background: #fff;
+        border-radius: 5px;
+        width: 30%;
+        position: relative;
+        z-index: 99;
+    }
+
+    .popup h2 
+    {
+        margin-top: 0;
+        color: #333;
+        font-family: Tahoma, Arial, sans-serif;
+    }
+    
+    .popup .close 
+    {
+        position: absolute;
+        top: 20px;
+        right: 30px;
+        transition: all 200ms;
+        font-size: 30px;
+        font-weight: bold;
+        text-decoration: none;
+        color: #333;
+    }
+    
+    .popup .close:hover 
+    {
+        color: red;
+    }
+    
+    .popup .content 
+    {
+        max-height: 30%;
+        overflow: auto;
+        font-size: 150%;
+    }
+
+    @media screen and (max-width: 700px)
+    {
+        .box
+        {
+            width: 70%;
+        }
+        
+        .popup
+        {
+            width: 70%;
+        }
+    }
+</style>
+
+
 <html>
-    <!-- Meta tags -->
-    <meta charset = "utf-8">
-    <meta name = "viewport" content = "width = device-width, initial-scale = 1, shrink-to-fit = no">
-    <meta name = "language" content = "RO">
-    <meta name = "Classification" content = "Business">
-    <meta name = "description" content = "Nandra Rares">
-    <meta name = "keywords" content = "Nandra Rares,Porgramator,Programator Alba Iulia,Porgramator Alba">
-    <meta name = "author" content = "Nandra Rares">
-    <meta http-equiv = "Expires" content = "0">
-    <meta http-equiv = "Cache-Control" content = "cache">
-    
-    <!-- Title and Icon -->
-    <title>Nandra Rares - Portofoliu</title>
-    <link rel = "icon" type = "image/png" href = "Images/Icon.png">
-    
-    <!-- Include Bootsrap -->
-    <link rel = "stylesheet" href = "ThirdParty/Bootstrap/BootstrapCSSMin.css">
-    <script src = "ThirdParty/Bootstrap/BootstrapJQueryMin.js"></script>
-    <script src = "ThirdParty/Bootstrap/BootstrapJSMin.js"></script>
+    <title>Pentru Doamna Diriginta</title>
 
-    <!-- Include Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <div class="flower">
+        <a href="#popup1">
 
-    <!-- Include JQuery -->
-     <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity = "sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
-
-    <!-- Include Image Slider Script -->
-    <script src = "js/jssor.slider-28.0.0.min.js" type = "text/javascript"></script>
-
-    <!-- Include CSS -->
-    <link rel = "stylesheet" type = "text/css" href = "style.css">
-
-    <!-- Include Script -->
-    <script src = "script.js"></script>
-
-    <!-- Top Navigation Bar -->
-    
-    <div class = "container-fluid TopNavigationBar">
-        <!-- Name Icon -->    
-        <a href = "index.html">    
-            <img id = "NameIcon" src = "Images/NameIcon.png" height= "50" width = "50">
+            <div class="flower__head">
+                <div class="flower__eye left">
+                    <span></span>
+                </div>
+            
+                <div class="flower__nose"></div>
+                <div class="flower__eye right">
+                    <span></span>
+                </div>
+            </div>
+        
+            <div class="flower__leaf"></div>
+            <div class="flower__leaf--shadow"></div>
+            <div class="flower__leaf oposite"></div>
+            <div class="flower__leaf--shadow oposite"></div>
+        
+            <div class="flower__stem"></div>
+        
+            <div class="flower__pot">
+                <h1 class="flower_writing">11 A</h1>
+                <div class="flower__pot--shadow"></div>
+                <div class="flower__pot--bottom"></div>
+            </div>
         </a>
-        
-        <!-- Navigation Bar Links -->
-        <nav>
-            <div class="collapse navbar-collapse" id = "NavigationPC">
-                <ul>
-                    <li><a id = "HomeLink" class = "ActiveLink" href = "index.html">Home</a></li>
-                    <li><a id = "AboutLink" href = "about.html">Despre mine</a></li>
-                    <li><a id = "ProjectsLink" href = "projects.html">Proiecte</a></li>
-                    <li><a id = "ContactLink" href = "contact.html">Contact</a></li>
-                </ul>
-            </div>
-        </nav>
-
-        <!-- Hamburger Menu -->
-        <div class = "HamburgerMenu">
-            <a href = "PhoneNavigation.html">
-                <i id = "BarsIcon" class = "fa fa-bars"></i>
-            </a>        
-        </div>
-    </div>
-
-    <!-- Intro Section -->
-
-    <div class = "container Intro">
-        <div class = "row">
-            <!-- Profile Photo -->
-            <div class = "col-lg-6">
-                <img id = "ProfilePhoto" src = "Images/ProfilePhoto.jpg">
-            </div>
-        
-            <!-- Intro Text -->
-            <div class = "col-lg-6 IntroSectionText">
-                <h1 id = "IntroSectionTitle">Nandra Rares</h1>
-                <p>Aici bag ceva vrajeala nush trb sa umplu spatiu asta cu text sa vad cum arata.</p>
-                <p>Daca chiar ma contacteaza careva din cauza la site as fi fericit idk trb sa imi pun proiecte pe aici</p>
-        
-                <!-- Intro Buttons -->
-                <a href = "#" class = "ButtonPrimary" id = "IntroButtonLeft">Buton test</a>
-                <a href = "#" class = "ButtonSecondary" id = "IntroButtonRight">Buton test</a>
-            </div>
-        </div>
-    </div>
-
-    <!-- Ocupations Section -->
-
-    <div class = "container Ocupations">
-        <!-- Ocupations Title -->
-        <h3>Cu ce ma ocup ?</h3>
-        
-        <!-- Custom underline -->
-        <div class = "Underline">
-            <span style = "width: 33%"></span>
-        </div>
-
-        <!-- Ocupations Text -->
-        <div class = "row">
-            <!-- Left column -->
-            <div class = "col-lg-6 ml-auto">
-                <p>Aici bag ceva vrajeala nush trb sa umplu spatiu asta cu text sa vad cum arata.</p>
-                <p>Daca chiar ma contacteaza careva din cauza la site as fi fericit idk trb sa imi pun proiecte pe aici</p>
-            </div>
-                
-            <!-- Right column -->
-            <div class="col-lg-6 ml-auto">
-                <p>Aici bag ceva vrajeala nush trb sa umplu spatiu asta cu text sa vad cum arata.</p>
-                <p>Daca chiar ma contacteaza careva din cauza la site as fi fericit idk trb sa imi pun proiecte pe aici</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Clients Section -->
-
-    <div class = "container">
-        <!-- Clients Title -->
-        <h3>Clienti :</h3>
-        
-        <!-- Custom underline -->
-        <div class = "Underline">
-            <span style = "width: 66%"></span>
-        </div>
-
-        <!-- Clients Slider -->
-        <div class = "row">
-            <div id = "slider">
-                <figure>
-                    <a href = "https://terainfo.ro">                        
-                        <img id = "ClientLogo" src = "Images/GoogleLogo.png" height= "150">
-                    </a>
-                    
-                    <a href = "https://terainfo.ro">                        
-                        <img id = "ClientLogo" src = "Images/FacebookLogo.png" height= "150">
-                    </a>
-
-                    <a href = "https://terainfo.ro">                        
-                        <img id = "ClientLogo" src = "Images/TeslaLogo.png" height= "150">
-                    </a>
-
-                    <a href = "https://terainfo.ro">                        
-                        <img id = "ClientLogo" src = "Images/AmazonLogo.png" height= "150">
-                    </a>
-
-                    <a href = "https://terainfo.ro">                        
-                        <img id = "ClientLogo" src = "Images/FacebookLogo.png" height= "150">
-                    </a>
-                </figure>
-            </div>   
-        </div>
-    </div>
-
-    <!-- Footer Section -->
-    <div class = "container-fluid FooterSection">
-        <h5 id = "CopyrightText">Copyright &copy; Nandra Rares 2020</h5>
     </div>
 
 
-    <!-- Scroll to top button -->
-    <div id = "ScrollToTopButton"></div>
-
+    <div id="popup1" class="overlay">
+        <div class="popup">
+            <h1>Un scurt mesaj pentru dumneavoastra din partea clasei</h1>
+            <a class="close" href="#">&times;</a>
+            <div class="content">
+                Chiar dacă anul acesta e diferit față de cum ne-am obișnuit, fără careul de începere a anului, dimineața aceea mereu friguroasa în care încercam mereu să ne găsim unii pe ceilalți.Fie formam o grupa, fie ne găseam pe parcurs, cu toții aveam câte un buchet de flori în mana pentru doamna diriginta, care se bucura enorm când ne vedea. În condițiile în care ne aflăm, ne-am gândit ca poate o floricica din partea clasei, ar putea înlocui măcar gestul pe care voiam sa îl facem cu atâta drag, ca de fiecare data.
+            </div>
+        </div>
+    </div>
 </html>
 
-<!-- Notite lmao -->
